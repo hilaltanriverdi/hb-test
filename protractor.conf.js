@@ -12,7 +12,8 @@ exports.config = {
         account: './e2e/account/*Spec.js',
         admin: './e2e/admin/*.js',
         entity: './e2e/entities/*.js',
-        cta: './e2e/cta/*.js'
+        cta: './e2e/cta/*.js',
+		merchant: './e2e/merchant/*.js'
     },
 
     capabilities: {
