@@ -47,14 +47,34 @@ describe(
 
         expect(element.all(by.model('vm.model.merchantSku')).first().getAttribute('value')).toEqual("merchant");
         expect(productBarcod.getAttribute('value')).toEqual("12");
+		
+		var cancelButton=element(by.xpath('//button[contains(., "Cancel")]'));
+        cancelButton.click();
 
         browser.ignoreSynchronization = false;
         console.log("see merchanta revision spec finished");
         });
+		
+		
+		 it('see error on merchanta s product', function(){
+        console.log('see error on merchanta product spec started');  
+        browser.ignoreSynchronization = true;
+
+        var editButton=element(by.xpath('/html/body/div[1]/md-content/md-card/md-card-content/div/if-merchant-selected/ng-transclude/product-table/div/md-custom-table/div/md-table-container/table/tbody/tr/td[2]/ng-include/div/button'));
+        editButton.click();
+        browser.sleep(2000);
+
+        var errorArea=element(by.xpath('//span[contains(text(), "Length cannot be smaller than 10.0. The actual length is 0")]'));
+        expect(errorArea.getText()).toMatch("Length cannot be smaller than 10.0. The actual length is 0");
+        
+        browser.sleep(2000);
+
+
+        browser.ignoreSynchronization = false;
+        console.log("see error on merchanta product spec finished");
+        });
 
         
-     
-
        
     }
 );
